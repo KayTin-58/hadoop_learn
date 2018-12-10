@@ -38,7 +38,6 @@ public class SelectClauseMRJob extends Configured implements Tool {
     public int run(String[] allArgs) throws Exception {
         Job job = Job.getInstance(getConf());
         job.setJarByClass(SelectClauseMRJob.class);
-
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
 

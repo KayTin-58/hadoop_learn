@@ -38,7 +38,7 @@ public class AggregationWithCombinerMRJob extends Configured implements Tool{
 
      
     public void map(LongWritable key, Text value, Context context) throws IOException, InterruptedException {
-        
+
         if(!AirlineDataUtils.isHeader(value)){         
            String[] contents = value.toString().split(",");
            String month = AirlineDataUtils.getMonth(contents);           
@@ -75,6 +75,10 @@ public class AggregationWithCombinerMRJob extends Configured implements Tool{
         return map;
     }
  }
+
+    /**
+     * 属于Reduce的子类   输入和输出类型必须和Mapper的输出类型相同
+     */
  public static class AggregationCombiner extends Reducer<Text, MapWritable, Text, MapWritable> {
      public void reduce(Text key, Iterable<MapWritable> values, Context context) 
    throws IOException, InterruptedException {

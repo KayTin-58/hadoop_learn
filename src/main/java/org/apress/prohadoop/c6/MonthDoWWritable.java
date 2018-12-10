@@ -17,19 +17,19 @@ public class MonthDoWWritable implements WritableComparable<MonthDoWWritable>{
     public MonthDoWWritable(){ 
     }
 
-    @Override
+
     public void write(DataOutput out) throws IOException {
         this.month.write(out);
         this.dayOfWeek.write(out);
     }
     
-    @Override
+
     public void readFields(DataInput in) throws IOException {
         this.month.readFields(in);
         this.dayOfWeek.readFields(in);
     }
     
-    @Override
+
     public int compareTo(MonthDoWWritable second) {
         if(this.month.get()==second.month.get()){
             return -1*this.dayOfWeek.compareTo(second.dayOfWeek);

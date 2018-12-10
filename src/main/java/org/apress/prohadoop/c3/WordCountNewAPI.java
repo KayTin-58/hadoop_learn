@@ -47,8 +47,10 @@ public class WordCountNewAPI {
         job.setReducerClass(MyReducer.class);
         job.setInputFormatClass(TextInputFormat.class);
         job.setOutputFormatClass(TextOutputFormat.class);
-        FileInputFormat.setInputPaths(job, new Path(args[0]));
-        FileOutputFormat.setOutputPath(job, new Path(args[1]));
+        String args1 = "D:\\IDEProject\\test.txt";
+        String args2 = "D:\\IDEProject\\test";
+        FileInputFormat.setInputPaths(job, new Path(args1));
+        FileOutputFormat.setOutputPath(job, new Path(args2));
         boolean status = job.waitForCompletion(true);
         if (status) {
             System.exit(0);

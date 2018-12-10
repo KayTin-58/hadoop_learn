@@ -7,6 +7,10 @@ import java.io.IOException;
 import org.apache.hadoop.io.Text;
 import org.apache.hadoop.io.WritableComparable;
 
+
+/**
+ * 自定义键  需要继承 WritableComparable接口
+ */
 public class ArrivalFlightKey implements WritableComparable<ArrivalFlightKey> {
     
     public Text destinationAirport = new Text("");
@@ -37,14 +41,26 @@ public class ArrivalFlightKey implements WritableComparable<ArrivalFlightKey> {
     public int compareTo(ArrivalFlightKey second) {
         return this.destinationAirport.compareTo(second.destinationAirport);
     }
-    
-    @Override
+
+
+
+
+    /**
+     *
+     * @param out
+     * @throws IOException
+     */
     public void write(DataOutput out) throws IOException {
+
         this.destinationAirport.write(out);
         this.arrivalDtTime.write(out);
     }
 
-    @Override
+    /**
+     * 读数据的属性必须和写数据的属性一致
+     * @param in
+     * @throws IOException
+     */
     public void readFields(DataInput in) throws IOException {
         this.destinationAirport.readFields(in);
         this.arrivalDtTime.readFields(in);

@@ -51,6 +51,7 @@ public class AnalyzeConsecutiveArrivalDelaysMRJob extends Configured implements 
                     out.append(v.toString()).append("|");
                 }
                 else{
+                    //
                     out.append(v.toString()).append("|").append(previousRecord.toString());
                 }
                 context.write(NullWritable.get(), new Text(out.toString()));
